@@ -272,6 +272,50 @@
     <a href="certifications.html" class="btn"
        style="background-color: #fff; color: #00d6c6; padding: 10px 20px; border-radius: 25px; font-size: 1rem; text-decoration: none; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       View All Certifications →
+
+         </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById("showCertificatesBtn").addEventListener("click", function () {
+    const gallery = document.getElementById("certificatesGallery");
+    
+    // List your certificate image filenames here
+    const certificateImages = [
+      "R S JIJIN - 2022-03-06_page-0001.jpg",
+      "R S JIJIN - 2022-08-23_page-0001.jpg",
+      "R S JIJIN - 2023-10-02_page-0001.jpg",
+       "R S JIJIN - 2023-10-10_page-0001.jpg"
+      "R S JIJIN - 2023-11-07_page-0001.jpg"
+      "R S JIJIN - 2023-12-03_page-0001.jpg"
+      "R S JIJIN - 2023-12-06_page-0001.jpg"
+      "R S JIJIN - 2023-12-11_page-0001.jpg"
+      "R S JIJIN - 2023-12-13_page-0001.jpg"
+    ];
+    
+    gallery.innerHTML = ""; // Clear previous content
+
+    certificateImages.forEach(img => {
+      const col = document.createElement("div");
+      col.className = "col-md-4 mb-4";
+
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const image = document.createElement("img");
+      image.src = `certificates/${img}`;
+      image.className = "card-img-top";
+      image.alt = "Certificate";
+
+      card.appendChild(image);
+      col.appendChild(card);
+      gallery.appendChild(col);
+    });
+
+    gallery.classList.remove("d-none");
+  });
+</script>
     </a>
   </div>
 </section>
