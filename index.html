@@ -240,86 +240,193 @@
 </div>
 <!-- Portfolio End -->
 
-    <!-- Professional Certificates Section -->
-    <section id="certifications" class="container py-5 bg-light">
-  <div class="text-center">
-    <h2>Certifications</h2>
-    <p>List your certifications and credentials.</p>
-  </div>
-</section>
-    
-<section id="certificate" style="background-color: #00d6c6; padding: 60px 20px; text-align: center; color: #fff;">
-  <h2 style="font-size: 2.5rem; margin-bottom: 30px;">Certifications</h2>
+     <!-- Improved Certificates Section -->
+    <section id="certifications" style="background-color: #00d6c6; padding: 60px 20px; text-align: center; color: #fff;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Professional Certifications</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 40px; opacity: 0.9;">Click on any certificate to view the full image</p>
 
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+            <!-- Certificates Grid -->
+            <div class="certificates-grid" id="certificatesGrid">
+                <!-- Certificates will be loaded here dynamically -->
+            </div>
 
-    <!-- Certificate 1 -->
-    <div style="background-color: #fff; padding: 20px; border-radius: 12px; width: 320px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-      <h3 style="font-size: 1.1rem; color: #00b6a6; margin-bottom: 10px;">Google Data Analytics</h3>
-      <iframe src="Certificates/Google Data Analytics Profwssional Certificate.pdf" width="100%" height="240px" style="border: 1px solid #ccc; border-radius: 8px;"></iframe>
+            <!-- View All Button -->
+            <div style="margin-top: 50px;">
+                <button onclick="showAllCertificates()" class="view-all-btn">
+                    <i class="fas fa-eye mr-2"></i>View All Certifications
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificate Modal -->
+    <div id="certificateModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Certificate</h3>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <img id="modalImage" src="" alt="Certificate">
+            </div>
+        </div>
     </div>
+        // Certificate data with proper names and file paths
+        const certificates = [
+            {
+                title: "Applied Machine Learning - Beginner to Professional",
+                filename: "Applied Machine Learning - Beginner to Professional_page-0001",
+                description: "Google Data Analytics Professional Certificate"
+            },
+            {
+                title: "Google Data Analytics Professional",
+                filename: "Google Data Analytics Professional Certificate_page-0001",
+                description: "Advanced Data Science and Analytics Certification"
+            },
+            {
+                title: "Power BI Advanced",
+                filename: "R S JIJIN - 2023-10-02_page-0001.jpg",
+                description: "Microsoft Power BI Advanced Certification"
+            },
+            {
+                title: "SQL Database Management",
+                filename: "R S JIJIN - 2023-10-10_page-0001.jpg",
+                description: "SQL Database Management and Optimization"
+            },
+            {
+                title: "Python for Data Science",
+                filename: "R S JIJIN - 2023-11-07_page-0001.jpg",
+                description: "Python for Data Science and Machine Learning"
+            },
+            {
+                title: "Business Intelligence",
+                filename: "R S JIJIN - 2023-12-03_page-0001.jpg",
+                description: "Business Intelligence and Dashboard Development"
+            },
+            {
+                title: "Cloud Analytics",
+                filename: "R S JIJIN - 2023-12-06_page-0001.jpg",
+                description: "Cloud-based Analytics and Data Engineering"
+            },
+            {
+                title: "Advanced Statistics",
+                filename: "R S JIJIN - 2023-12-11_page-0001.jpg",
+                description: "Advanced Statistics and Probability for Data Science"
+            },
+            {
+                title: "Data Visualization",
+                filename: "R S JIJIN - 2023-12-13_page-0001.jpg",
+                description: "Advanced Data Visualization and Storytelling"
+            }
+        ];
 
-    <!-- Certificate 2 -->
-    <div style="background-color: #fff; padding: 20px; border-radius: 12px; width: 320px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-      <h3 style="font-size: 1.1rem; color: #00b6a6; margin-bottom: 10px;">Power BI Advanced</h3>
-      <iframe src="Certificates/Python for Data Science and Machine Learning Bootcamp.pdf" width="100%" height="240px" style="border: 1px solid #ccc; border-radius: 8px;"></iframe>
-    </div>
+        // Load initial certificate previews (first 4)
+        function loadCertificatePreviews() {
+            const grid = document.getElementById('certificatesGrid');
+            const previewCerts = certificates.slice(0, 4); // Show first 4 certificates
+            
+            previewCerts.forEach((cert, index) => {
+                const certElement = document.createElement('div');
+                certElement.className = 'certificate-preview';
+                certElement.onclick = () => openModal(cert.title, cert.filename);
+                
+                certElement.innerHTML = `
+                    <img src="certificates/${cert.filename}" alt="${cert.title}" onerror="this.src='img/certificate-placeholder.png'">
+                    <div class="certificate-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="certificate-title">${cert.title}</div>
+                `;
+                
+                grid.appendChild(certElement);
+            });
+        }
 
-  </div>
+        // Show all certificates
+        function showAllCertificates() {
+            const grid = document.getElementById('certificatesGrid');
+            grid.innerHTML = ''; // Clear existing content
+            
+            certificates.forEach((cert, index) => {
+                const certElement = document.createElement('div');
+                certElement.className = 'certificate-preview';
+                certElement.onclick = () => openModal(cert.title, cert.filename);
+                
+                certElement.innerHTML = `
+                    <img src="certificates/${cert.filename}" alt="${cert.title}" onerror="this.src='img/certificate-placeholder.png'">
+                    <div class="certificate-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="certificate-title">${cert.title}</div>
+                `;
+                
+                grid.appendChild(certElement);
+            });
 
-  <!-- View All Button -->
-  <div style="margin-top: 40px;">
-    <a href="certifications.html" class="btn"
-       style="background-color: #fff; color: #00d6c6; padding: 10px 20px; border-radius: 25px; font-size: 1rem; text-decoration: none; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-      View All Certifications →
+            // Change button text
+            const btn = document.querySelector('.view-all-btn');
+            btn.innerHTML = '<i class="fas fa-eye-slash mr-2"></i>Show Less';
+            btn.onclick = showLessCertificates;
+        }
 
-         </div>
-  </div>
-</section>
+        // Show less certificates (back to preview)
+        function showLessCertificates() {
+            const grid = document.getElementById('certificatesGrid');
+            grid.innerHTML = ''; // Clear existing content
+            loadCertificatePreviews(); // Load preview again
 
-<script>
-  document.getElementById("showCertificatesBtn").addEventListener("click", function () {
-    const gallery = document.getElementById("certificatesGallery");
-    
-    // List your certificate image filenames here
-    const certificateImages = [
-      "R S JIJIN - 2022-03-06_page-0001.jpg",
-      "R S JIJIN - 2022-08-23_page-0001.jpg",
-      "R S JIJIN - 2023-10-02_page-0001.jpg",
-       "R S JIJIN - 2023-10-10_page-0001.jpg"
-      "R S JIJIN - 2023-11-07_page-0001.jpg"
-      "R S JIJIN - 2023-12-03_page-0001.jpg"
-      "R S JIJIN - 2023-12-06_page-0001.jpg"
-      "R S JIJIN - 2023-12-11_page-0001.jpg"
-      "R S JIJIN - 2023-12-13_page-0001.jpg"
-    ];
-    
-    gallery.innerHTML = ""; // Clear previous content
+            // Change button text back
+            const btn = document.querySelector('.view-all-btn');
+            btn.innerHTML = '<i class="fas fa-eye mr-2"></i>View All Certifications';
+            btn.onclick = showAllCertificates;
+        }
 
-    certificateImages.forEach(img => {
-      const col = document.createElement("div");
-      col.className = "col-md-4 mb-4";
+        // Open modal with certificate
+        function openModal(title, filename) {
+            const modal = document.getElementById('certificateModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalImage = document.getElementById('modalImage');
+            
+            modalTitle.textContent = title;
+            modalImage.src = `certificates/${filename}`;
+            modalImage.alt = title;
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
 
-      const card = document.createElement("div");
-      card.className = "card";
+        // Close modal
+        function closeModal() {
+            const modal = document.getElementById('certificateModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
 
-      const image = document.createElement("img");
-      image.src = `certificates/${img}`;
-      image.className = "card-img-top";
-      image.alt = "Certificate";
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('certificateModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
 
-      card.appendChild(image);
-      col.appendChild(card);
-      gallery.appendChild(col);
-    });
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
 
-    gallery.classList.remove("d-none");
-  });
-</script>
-    </a>
-  </div>
-</section>
+        // Load certificates when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCertificatePreviews();
+        });
+    </script>
 
+</body>
+
+</html>
 
     <!-- About Me Preview Section -->
 <section style="background-color: #ffffff; padding: 60px 20px;">
