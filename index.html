@@ -241,7 +241,7 @@
 <!-- Portfolio End -->
 
      <!-- Improved Certificates Section -->
-   <!-- Certificates Section -->
+  <!-- Certificates Section -->
 <section id="certifications" style="background-color: #00d6c6; padding: 60px 20px; text-align: center; color: #fff;">
   <div style="max-width: 1200px; margin: 0 auto;">
     <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Professional Certifications</h2>
@@ -275,51 +275,17 @@
 <!-- Certificate Script -->
 <script>
   const certificates = [
-    {
-      title: "Applied Machine Learning - Beginner to Professional",
-      filename: "Applied Machine Learning - Beginner to Professional_page-0001.jpg",
-      description: "Google Data Analytics Professional Certificate"
-    },
-    {
-      title: "Google Data Analytics Professional",
-      filename: "Google Data Analytics Professional Certificate_page-0001.jpg",
-      description: "Advanced Data Science and Analytics Certification"
-    },
-    {
-      title: "Power BI Advanced",
-      filename: "R S JIJIN - 2023-10-02_page-0001.jpg",
-      description: "Microsoft Power BI Advanced Certification"
-    },
-    {
-      title: "SQL Database Management",
-      filename: "R S JIJIN - 2023-10-10_page-0001.jpg",
-      description: "SQL Database Management and Optimization"
-    },
-    {
-      title: "Python for Data Science",
-      filename: "R S JIJIN - 2023-11-07_page-0001.jpg",
-      description: "Python for Data Science and Machine Learning"
-    },
-    {
-      title: "Business Intelligence",
-      filename: "R S JIJIN - 2023-12-03_page-0001.jpg",
-      description: "Business Intelligence and Dashboard Development"
-    },
-    {
-      title: "Cloud Analytics",
-      filename: "R S JIJIN - 2023-12-06_page-0001.jpg",
-      description: "Cloud-based Analytics and Data Engineering"
-    },
-    {
-      title: "Advanced Statistics",
-      filename: "R S JIJIN - 2023-12-11_page-0001.jpg",
-      description: "Advanced Statistics and Probability for Data Science"
-    },
-    {
-      title: "Data Visualization",
-      filename: "R S JIJIN - 2023-12-13_page-0001.jpg",
-      description: "Advanced Data Visualization and Storytelling"
-    }
+    { title: "Applied Machine Learning", filename: "Applied Machine Learning - Beginner to Professional_page-0001.jpg" },
+    { title: "Discovering Data Science", filename: "Discovering Data Science_page-0001.jpg" },
+    { title: "Fundamentals of AWS", filename: "Fundamentals of AWS_page-0001.jpg" },
+    { title: "Fundamentals of Deep Learning", filename: "Fundamentals of Deep Learning_page-0001.jpg" },
+    { title: "Google Data Analytics", filename: "Google Data Analytics Professional Certificate_page-0001.jpg" },
+    { title: "Mastering Apache Spark", filename: "Mastering Apache Spark using Python_page-0001.jpg" },
+    { title: "Model Deployment", filename: "Model Deployment_page-0001.jpg" },
+    { title: "NLP with Deep Learning", filename: "Natural Language Processing (NLP) Using Deep Learning_page-0001.jpg" },
+    { title: "Python for Data Science", filename: "Python for Data Science and Machine Learning Bootcamp_page-0001.jpg" },
+    { title: "Structured Thinking & Communication", filename: "Structured Thinking and Communication for Data Science_page-0001.jpg" },
+    { title: "Time Series Forecasting", filename: "Time Series Forecasting using Python- V1_page-0001.jpg" }
   ];
 
   function loadCertificatePreviews() {
@@ -332,7 +298,7 @@
       certElement.style = 'position: relative; cursor: pointer; width: 250px;';
       certElement.onclick = () => openModal(cert.title, cert.filename);
       certElement.innerHTML = `
-        <img src="certificates/${cert.filename}" alt="${cert.title}" style="width: 100%; border-radius: 8px;" onerror="this.src='img/certificate-placeholder.png'">
+        <img src="Certificates/${cert.filename}" alt="${cert.title}" style="width: 100%; border-radius: 8px;" onerror="this.src='img/certificate-placeholder.png'">
         <div style="position: absolute; bottom: 5px; left: 0; right: 0; background-color: rgba(0,0,0,0.6); color: white; padding: 5px; font-size: 14px;">${cert.title}</div>
       `;
       grid.appendChild(certElement);
@@ -348,7 +314,7 @@
       certElement.style = 'position: relative; cursor: pointer; width: 250px;';
       certElement.onclick = () => openModal(cert.title, cert.filename);
       certElement.innerHTML = `
-        <img src="certificates/${cert.filename}" alt="${cert.title}" style="width: 100%; border-radius: 8px;" onerror="this.src='img/certificate-placeholder.png'">
+        <img src="Certificates/${cert.filename}" alt="${cert.title}" style="width: 100%; border-radius: 8px;" onerror="this.src='img/certificate-placeholder.png'">
         <div style="position: absolute; bottom: 5px; left: 0; right: 0; background-color: rgba(0,0,0,0.6); color: white; padding: 5px; font-size: 14px;">${cert.title}</div>
       `;
       grid.appendChild(certElement);
@@ -368,7 +334,7 @@
 
   function openModal(title, filename) {
     document.getElementById('modalTitle').textContent = title;
-    document.getElementById('modalImage').src = `certificates/${filename}`;
+    document.getElementById('modalImage').src = `Certificates/${filename}`;
     document.getElementById('certificateModal').style.display = 'block';
     document.body.style.overflow = 'hidden';
   }
@@ -380,31 +346,16 @@
 
   window.onclick = function (event) {
     const modal = document.getElementById('certificateModal');
-    if (event.target === modal) {
-      closeModal();
-    }
+    if (event.target === modal) closeModal();
   }
 
   document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
-      closeModal();
-    }
+    if (event.key === 'Escape') closeModal();
   });
 
   document.addEventListener('DOMContentLoaded', loadCertificatePreviews);
 </script>
 
-
-    <!-- About Me Preview Section -->
-<section style="background-color: #ffffff; padding: 60px 20px;">
-  <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
-
-    <h2 style="font-size: 36px; font-weight: 700; color: #00d2c6; margin-bottom: 10px;">About Me</h2>
-    <div style="width: 60px; height: 4px; background-color: #00d2c6; margin: 0 auto 30px auto; border-radius: 2px;"></div>
-
-    <p style="font-size: 16px; color: #555; max-width: 700px; margin: 0 auto 40px auto;">
-      I'm a passionate data analyst with 5+ years of industry experience and 50+ data-driven projects under my belt. I specialize in transforming raw data into actionable insights using Power BI, Python, SQL, and cloud analytics tools. I also mentor aspiring analysts to help them break into the field.
-    </p>
 
     <!-- About Me Button -->
     <a href="/about.html" style="display: inline-block; padding: 12px 24px; background-color: #00d2c6; color: #ffffff; font-weight: 600; border-radius: 30px; text-decoration: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s ease;">
